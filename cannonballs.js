@@ -13,18 +13,18 @@ canvas.width = CANVAS_WIDTH;
 canvas.height = CANVAS_HEIGHT;
 
 const CANNON_LENGTH = 20;
-const CANNON_POSITION = [CANVAS_WIDTH / 2, 7 / 8 * CANVAS_HEIGHT];
+const CANNON_POSITION = [CANVAS_WIDTH / 2, 3 / 4 * CANVAS_HEIGHT];
 const MAX_POWER = 500;
 const GRAVITY = 100;
-const DT = 0.01;
 const NR_OF_TRAJECTORY_STEPS = 1000;
 
 
 class Cannon {
     constructor(position) {
         this.position = position;
-        this.angle = 3 * PI / 4;
-        this.power = 0.2 * MAX_POWER;
+        this.angle = angle_from_slider_value(1350);
+        this.power = power_from_slider_value(200);
+        this.dt = dt_from_slider_value(0);
     }
     draw() {
         this.draw_cannon();
@@ -42,7 +42,7 @@ class Cannon {
     draw_trajectory() {
         ctx.strokeStyle = "gray";
         ctx.lineWidth = 1;
-        let trajectory = calculate_trajectory(this.position, this.angle, this.power, DT);
+        let trajectory = calculate_trajectory(this.position, this.angle, this.power, this.dt);
         for (let i = 1; i < trajectory.length; i++) {
             let pos_i = trajectory[i - 1];
             let pos_f = trajectory[i];
@@ -54,7 +54,7 @@ class Cannon {
 function calculate_trajectory(position, angle, power, dt) {
     let pos = position;
     let vel = [power * Math.cos(angle), power * Math.sin(angle)];
-    let trajectory = [];
+    let trajectory = [pos];
     // Do simple explicit Euler forwarding.
     for (let i = 0; i < NR_OF_TRAJECTORY_STEPS; i++) {
         let force = [0, -GRAVITY];
@@ -76,6 +76,10 @@ function clear_canvas() {
     ctx.fillRect(0, 0, SCALE * CANVAS_WIDTH, SCALE * CANVAS_HEIGHT);
 }
 
+const angle_from_slider_value = (value) => value / 3600 * 2 * PI;
+const power_from_slider_value = (value) => value / 1000 * MAX_POWER;
+const dt_from_slider_value = (value) => Math.pow(10, (value - 5000) / 10000);
+
 function main() {
     let cannon = new Cannon(CANNON_POSITION);
     cannon.draw();
@@ -84,7 +88,7 @@ function main() {
     var angle_slider = document.getElementById("angle_slider");
     var onAngleInput = () => {
         clear_canvas();
-        cannon.angle = angle_slider.value / 3600 * 2 * PI;
+        cannon.angle = angle_from_slider_value(angle_slider.value);
         cannon.draw();
     };
     angle_slider.addEventListener('input', onAngleInput, false);
@@ -93,11 +97,20 @@ function main() {
     var power_slider = document.getElementById("power_slider");
     var onPowerInput = () => {
         clear_canvas();
-        cannon.power = power_slider.value / 1000 * MAX_POWER;
+        cannon.power = power_from_slider_value(power_slider.value);
         cannon.draw();
         cannon.draw_trajectory();
     };
     power_slider.addEventListener('input', onPowerInput, false);
 
+    // Setup slider 2: Cannon shooting power.
+    var dt_slider = document.getElementById("dt_slider");
+    var onDtInput = () => {
+        clear_canvas();
+        cannon.dt = dt_from_slider_value(dt_slider.value);
+        cannon.draw();
+        cannon.draw_trajectory();
+    };
+    dt_slider.addEventListener('input', onDtInput, false);
 }
 main()
