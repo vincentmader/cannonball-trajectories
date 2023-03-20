@@ -1,0 +1,32 @@
+* {
+    --padding: 20px;
+    margin: 0px;
+    padding: 0px;
+}
+
+body {
+    background-color: #111111;
+    padding: var(--padding);
+}
+
+canvas {
+    border: 2px solid #444444;
+    border-radius: var(--padding);
+    background-color: black;
+    width: 100%;
+    margin-bottom: var(--padding);
+}
+
+input {
+    --padding: 10px;
+    padding: var(--padding);
+    width: calc(100% - 2*var(--padding));
+    background: white;
+}
+
+.sliders {
+    width: 100%;
+    background-color: black;
+    border: 1px solid #444444;
+    border-radius: var(--padding);
+}
