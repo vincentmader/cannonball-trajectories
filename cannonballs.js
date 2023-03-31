@@ -1,9 +1,10 @@
 const PI = 3.14159;
 
 var canvas = document.getElementById("canvas");
+
 var ctx = canvas.getContext("2d");
 const INTERNAL_CANVAS_WIDTH = canvas.width;
-const INTERNAL_CANVAS_HEIGHT = INTERNAL_CANVAS_WIDTH / 2;
+const INTERNAL_CANVAS_HEIGHT = INTERNAL_CANVAS_WIDTH;
 canvas.style.width = INTERNAL_CANVAS_WIDTH;
 canvas.style.height = INTERNAL_CANVAS_WIDTH;
 const SCALE = 4;
