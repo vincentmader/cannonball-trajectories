@@ -3,3 +3,5 @@
 To get started, open the html file, e.g. with `open index.html` on macOS.
 
 See also a similar visualization I made on [[https://github.com/vincentmader/orbit-precalculations][orbit precalculations]].
+
+[[./example.png]]
