@@ -1,5 +1,5 @@
-* Cannonball trajectories
+* Cannonball Trajectories
 
-To get started, open the html file, e.g. with `open cannonballs.html` on macOS.
+To get started, open the html file, e.g. with `open index.html` on macOS.
 
 See also a similar visualization I made on [[https://github.com/vincentmader/orbital-dynamics][orbital dynamics]].
