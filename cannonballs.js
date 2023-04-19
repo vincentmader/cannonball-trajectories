@@ -19,7 +19,6 @@ const MAX_POWER = 500;
 const GRAVITY = 100;
 const NR_OF_TRAJECTORY_STEPS = 1000;
 
-
 class Cannon {
     constructor(position) {
         this.position = position;
@@ -86,31 +85,39 @@ function main() {
     cannon.draw();
 
     // Setup slider 1: Cannon angle.
-    var angle_slider = document.getElementById("angle_slider");
+    var angle_slider = document.getElementById("input_angle");
     var onAngleInput = () => {
         clear_canvas();
         cannon.angle = angle_from_slider_value(angle_slider.value);
         cannon.draw();
+        let p = document.getElementById("p_angle");
+        p.innerHTML = "angle = " + Math.round(cannon.angle * 1000) / 1000;
     };
     angle_slider.addEventListener('input', onAngleInput, false);
 
     // Setup slider 2: Cannon shooting power.
-    var power_slider = document.getElementById("power_slider");
+    var power_slider = document.getElementById("input_v0");
     var onPowerInput = () => {
         clear_canvas();
-        cannon.power = power_from_slider_value(power_slider.value);
+        let v0 = power_slider.value;
+        cannon.power = power_from_slider_value(v0);
         cannon.draw();
         cannon.draw_trajectory();
+        let p = document.getElementById("p_v0");
+        p.innerHTML = "initial velocity: v0 = " + v0;
     };
     power_slider.addEventListener('input', onPowerInput, false);
 
     // Setup slider 2: Cannon shooting power.
-    var dt_slider = document.getElementById("dt_slider");
+    var dt_slider = document.getElementById("input_dt");
     var onDtInput = () => {
         clear_canvas();
-        cannon.dt = dt_from_slider_value(dt_slider.value);
+        dt = dt_slider.value;
+        cannon.dt = dt_from_slider_value(dt);
         cannon.draw();
         cannon.draw_trajectory();
+        let p = document.getElementById("p_dt");
+        p.innerHTML = "time step size: dt = " + dt;
     };
     dt_slider.addEventListener('input', onDtInput, false);
 }

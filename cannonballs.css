@@ -3,11 +3,17 @@
     --DEFAULT-BORDER: 2px solid #444444;
     margin: 0px;
     padding: 0px;
+    font-family: 'Trebuchet MS';
 }
 
 body {
     background-color: #111111;
     padding: var(--DEFAULT-PADDING);
+}
+
+h2 {
+    text-align: center;
+    color: white;
 }
 
 canvas {
@@ -16,18 +22,24 @@ canvas {
     background-color: black;
     width: 100%;
     margin-bottom: var(--DEFAULT-PADDING);
+    margin-top: var(--DEFAULT-PADDING);
 }
 
 input {
     --padding: 10px;
     padding: var(--padding);
     width: calc(100% - 2*var(--padding));
-    background: white;
 }
 
-.sliders {
-    width: 100%;
+form {
+    text-align: center;
+    width: calc(100% - 2*var(--padding));
     background-color: black;
     border: var(--DEFAULT-BORDER);
     border-radius: var(--DEFAULT-PADDING);
+    padding: var(--DEFAULT-PADDING);
+}
+
+p {
+    color: white;
 }

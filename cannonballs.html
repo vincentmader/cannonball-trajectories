@@ -9,12 +9,16 @@
 </head>
 
 <body>
+    <h2>Cannon Ball Trajectories</h2>
     <canvas id="canvas"></canvas>
-    <div class="sliders">
-        <input type="range" id="angle_slider" min="0" max="3600" value="1350" />
-        <input type="range" id="power_slider" min="0" max="1000" value="200" />
-        <input type="range" id="dt_slider" min="0" max="10000" value="0" />
-    </div>
+    <form>
+        <p id="p_angle">angle</p>
+        <input type="range" id="input_angle" min="0" max="3600" value="1350" />
+        <p id="p_v0">initial velocity</p>
+        <input type="range" id="input_v0" min="0" max="1000" value="200" />
+        <p id="p_dt">time step size</p>
+        <input type="range" id="input_dt" min="0" max="10000" value="0" />
+    </form>
     <script src="./cannonballs.js"></script>
 </body>
 
