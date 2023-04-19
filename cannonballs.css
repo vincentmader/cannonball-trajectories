@@ -1,5 +1,6 @@
 * {
     --DEFAULT-PADDING: 20px;
+    --DEFAULT-BORDER: 2px solid #444444;
     margin: 0px;
     padding: 0px;
 }
@@ -10,7 +11,7 @@ body {
 }
 
 canvas {
-    border: 2px solid #444444;
+    border: var(--DEFAULT-BORDER);
     border-radius: var(--DEFAULT-PADDING);
     background-color: black;
     width: 100%;
@@ -18,15 +19,15 @@ canvas {
 }
 
 input {
-    --DEFAULT-PADDING: 10px;
-    padding: var(--DEFAULT-PADDING);
-    width: calc(100% - 2*var(--DEFAULT-PADDING));
+    --padding: 10px;
+    padding: var(--padding);
+    width: calc(100% - 2*var(--padding));
     background: white;
 }
 
 .sliders {
     width: 100%;
     background-color: black;
-    border: 1px solid #444444;
+    border: var(--DEFAULT-BORDER);
     border-radius: var(--DEFAULT-PADDING);
 }
