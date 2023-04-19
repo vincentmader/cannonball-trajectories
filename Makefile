@@ -1,2 +1,2 @@
-browser:
-	open cannonballs.html
+open_in_browser:
+	open index.html
